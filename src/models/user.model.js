@@ -3,7 +3,11 @@ var uniqueValidator = require('mongoose-unique-validator');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Schema = mongoose.Schema;
+
+const userType = ['customer', 'restaurant']
+
 const userSchema = new Schema({
+    user_type: { type: String, enum: userType, default: "customer" },
     name: {
         type: String,
         required: true,
